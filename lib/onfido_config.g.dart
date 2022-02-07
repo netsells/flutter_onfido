@@ -16,7 +16,7 @@ OnfidoConfig _$OnfidoConfigFromJson(Map<String, dynamic> json) => OnfidoConfig(
 Map<String, dynamic> _$OnfidoConfigToJson(OnfidoConfig instance) =>
     <String, dynamic>{
       'sdkToken': instance.sdkToken,
-      'flowSteps': instance.flowSteps,
+      'flowSteps': instance.flowSteps.toJson(),
       'locale': instance.locale,
     };
 
@@ -36,8 +36,8 @@ OnfidoFlowSteps _$OnfidoFlowStepsFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$OnfidoFlowStepsToJson(OnfidoFlowSteps instance) =>
     <String, dynamic>{
       'welcome': instance.welcome,
-      'captureDocument': instance.captureDocument,
-      'captureFace': instance.captureFace,
+      'captureDocument': instance.captureDocument?.toJson(),
+      'captureFace': instance.captureFace?.toJson(),
     };
 
 OnfidoCaptureDocumentStep _$OnfidoCaptureDocumentStepFromJson(
@@ -48,6 +48,13 @@ OnfidoCaptureDocumentStep _$OnfidoCaptureDocumentStepFromJson(
       countryCode:
           _$enumDecodeNullable(_$OnfidoCountryCodeEnumMap, json['countryCode']),
     );
+
+Map<String, dynamic> _$OnfidoCaptureDocumentStepToJson(
+        OnfidoCaptureDocumentStep instance) =>
+    <String, dynamic>{
+      'docType': _$OnfidoDocumentTypeEnumMap[instance.docType],
+      'countryCode': _$OnfidoCountryCodeEnumMap[instance.countryCode],
+    };
 
 T? _$enumDecode<T>(
   Map<T, dynamic> enumValues,
@@ -78,13 +85,6 @@ T? _$enumDecodeNullable<T>(
   }
   return _$enumDecode<T>(enumValues, source, unknownValue: unknownValue);
 }
-
-Map<String, dynamic> _$OnfidoCaptureDocumentStepToJson(
-        OnfidoCaptureDocumentStep instance) =>
-    <String, dynamic>{
-      'docType': _$OnfidoDocumentTypeEnumMap[instance.docType],
-      'countryCode': _$OnfidoCountryCodeEnumMap[instance.countryCode],
-    };
 
 const _$OnfidoDocumentTypeEnumMap = {
   OnfidoDocumentType.PASSPORT: 'PASSPORT',
@@ -398,8 +398,8 @@ OnfidoResult _$OnfidoResultFromJson(Map<String, dynamic> json) => OnfidoResult(
 
 Map<String, dynamic> _$OnfidoResultToJson(OnfidoResult instance) =>
     <String, dynamic>{
-      'document': instance.document,
-      'face': instance.face,
+      'document': instance.document?.toJson(),
+      'face': instance.face?.toJson(),
     };
 
 OnfidoFaceResult _$OnfidoFaceResultFromJson(Map<String, dynamic> json) =>
@@ -431,8 +431,8 @@ OnfidoDocumentResult _$OnfidoDocumentResultFromJson(
 Map<String, dynamic> _$OnfidoDocumentResultToJson(
         OnfidoDocumentResult instance) =>
     <String, dynamic>{
-      'front': instance.front,
-      'back': instance.back,
+      'front': instance.front?.toJson(),
+      'back': instance.back?.toJson(),
     };
 
 OnfidoDocumentResultDetail _$OnfidoDocumentResultDetailFromJson(
