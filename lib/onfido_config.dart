@@ -30,8 +30,8 @@ class OnfidoConfig {
 
 class OnfidoFlowSteps {
   final bool? welcome;
-  final OnfidoCaptureDocumentStep captureDocument;
-  final OnfidoCaptureFaceStep captureFace;
+  final OnfidoCaptureDocumentStep? captureDocument;
+  final OnfidoCaptureFaceStep? captureFace;
 
   OnfidoFlowSteps({
     this.welcome,
